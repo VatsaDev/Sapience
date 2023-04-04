@@ -10,21 +10,18 @@ export default class Game extends Phaser.Scene {
 
   init() {}
 
-  preload() {}
+  preload() {
+    this.load.image(
+      "tileset",
+      "assets/tileset.png"
+    );
+    this.load.tilemapTiledJSON("map", "assets/map.tmj");
+  }
 
   create() {
-    this.physics.add.collider(this.platforms, this.carrots);
-    this.physics.add.overlap(
-      this.player,
-      this.carrots,
-      this.handleCollectCarrot,
-      undefined,
-      this
-    );
-
-    this.Text = this.add
-      .text(240, 10, "Hello\nWorld", { color: "#fff", fontSize: 44 })
-      .setOrigin(0.5, -0.3);
+    this.map = this.make.tilemap({ key: "map" });
+    this.tiles = this.map.addTilesetImage("tileset", "tileset");
+    this.worldLayer = this.map.createLayer("Tile Layer 1", this.tiles, 0, 0);
   }
 
   update() {
