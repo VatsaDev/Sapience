@@ -27,10 +27,10 @@ export default class Game extends Phaser.Scene {
 
     this.controlConfig = {
         camera: this.cameras.main,
-        left: cursors.left,
-        right: cursors.right,
-        up: cursors.up,
-        down: cursors.down,
+        left: this.cursors.left,
+        right: this.cursors.right,
+        up: this.cursors.up,
+        down: this.cursors.down,
         acceleration: 0.04,
         drag: 0.0005,
         maxSpeed: 0.7
