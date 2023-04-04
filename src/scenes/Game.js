@@ -22,6 +22,21 @@ export default class Game extends Phaser.Scene {
     this.map = this.make.tilemap({ key: "map" });
     this.tiles = this.map.addTilesetImage("tileset", "tileset");
     this.worldLayer = this.map.createLayer("Tile Layer 1", this.tiles, 0, 0);
+
+    this.cursors = this.input.keyboard.createCursorKeys();
+
+    this.controlConfig = {
+        camera: this.cameras.main,
+        left: cursors.left,
+        right: cursors.right,
+        up: cursors.up,
+        down: cursors.down,
+        acceleration: 0.04,
+        drag: 0.0005,
+        maxSpeed: 0.7
+    };
+
+    controls = new Phaser.Cameras.Controls.SmoothedKeyControl(this.controlConfig);
   }
 
   update() {
